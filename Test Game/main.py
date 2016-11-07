@@ -7,16 +7,17 @@ clock = pygame.time.Clock()
 WIDTH = 1920
 HEIGHT = 1080
 RED = (255, 0, 0)
-BLUE = (0, 188, 255)
-BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+LBLUE = (0, 170, 255)
+BLUE = (0, 188, 255)
 key = pygame.key.get_pressed()
 speed = 5
 
 window = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
 pygame.display.set_caption('Squid VS Eel')
 mainloop = True
-gameWindow = pygame.draw.rect(window, BLUE,(20, 20, 1880, 1040))
+gameWindow = pygame.draw.rect(window, BLUE,(10, 10, 1900, 900))
 playerOne = pygame.draw.rect(window, RED, (10, 10, 10, 10))
 playerTwo = pygame.draw.rect(window, BLACK, (10, 10, 10, 10))
 
@@ -52,7 +53,7 @@ while mainloop == True:
         playerTwo.move_ip(-speed, 0)
 
 
-    window.fill(WHITE)
+    window.fill(LBLUE)
     pygame.draw.rect(window, BLUE, gameWindow)
     pygame.draw.rect(window, WHITE, playerOne)
     playerOne.clamp_ip(gameWindow)

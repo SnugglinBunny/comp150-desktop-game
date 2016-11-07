@@ -1,9 +1,10 @@
 import pygame, sys
 from pygame.locals import *
-from player import *
+import player
 
 pygame.init()
 
+WHITE = 255, 255, 255
 w = 1920
 h = 1080
 gravity = 0
@@ -11,20 +12,24 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((w, h), 0, 32)
 
-squid = Player(400, 0)
+squid = player.Player(400, 0)
 
 movex, movey = 0, 0
 
 while True:
 
     pressed = pygame.key.get_pressed()
-    screen.fill((255,255,255))
+    screen.fill((WHITE))
     clock.tick(40)
 
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+
+    if pressed[K_ESCAPE]:
+        pygame.quit()
+        sys.exit()
 
     if pressed[K_RIGHT]:
         squid.x += 10

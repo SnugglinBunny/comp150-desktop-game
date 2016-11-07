@@ -8,8 +8,6 @@ class Player:
         self.width = 426
         self.height = 455
         self.velocity = 0
-        self.falling = True
-        self.onGround = False
 
         self.images = pygame.image.load("Images/SquidWalk.png")
         self.numImages = 7

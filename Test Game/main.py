@@ -13,13 +13,20 @@ LBLUE = (0, 170, 255)
 BLUE = (0, 188, 255)
 key = pygame.key.get_pressed()
 speed = 5
+playerOneSize = (40, 40)
+playerTwoSize = (40, 40)
 
-window = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
+try:
+    window = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
+    gameWindow = pygame.draw.rect(window, BLUE, (10, 10, 1900, 900))
+except:
+    window = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN, 0)
+    gameWindow = pygame.draw.rect(window, BLUE, (10, 10, 1346, 748))
+
 pygame.display.set_caption('Squid VS Eel')
 mainloop = True
-gameWindow = pygame.draw.rect(window, BLUE,(10, 10, 1900, 900))
-playerOne = pygame.draw.rect(window, RED, (10, 10, 10, 10))
-playerTwo = pygame.draw.rect(window, BLACK, (10, 10, 10, 10))
+playerOne = pygame.draw.rect(window, RED, (10, 10, 40, 40))
+playerTwo = pygame.draw.rect(window, BLACK, (10, 10, 40, 40))
 
 while mainloop == True:
     for event in pygame.event.get():
@@ -31,16 +38,16 @@ while mainloop == True:
                 exit()
 
     key = pygame.key.get_pressed()
-    if key [pygame.K_s]:
-        playerOne.move_ip(0, speed)
     if key[pygame.K_w]:
         playerOne.move_ip(0, -speed)
-    if key[pygame.K_d]:
-        playerOne.move_ip(speed, 0)
     if key[pygame.K_a]:
         playerOne.move_ip(-speed, 0)
+    if key [pygame.K_s]:
+        playerOne.move_ip(0, speed)
+    if key[pygame.K_d]:
+        playerOne.move_ip(speed, 0)
     if key[pygame.K_LSHIFT]:
-        speed = -speed
+        playerOneSize = 50,50
 
 
     if key [pygame.K_DOWN]:

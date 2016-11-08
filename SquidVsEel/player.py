@@ -2,14 +2,15 @@ import pygame
 
 class Player:
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, width, height, imagePath):
         self.x = x
         self.y = y
-        self.width = 426
-        self.height = 455
+        self.width = width/4
+        self.height = height/4
         self.velocity = 0
 
-        self.images = pygame.image.load("Images/SquidWalk.png")
+        self.images = pygame.image.load(imagePath)
+        self.images = pygame.transform.scale(self.images, (self.width*8, self.height))
         self.numImages = 7
         self.currentImage = 0
 

@@ -7,23 +7,31 @@ pygame.init()
 WHITE = 255, 255, 255
 WIDTH = 1920
 HEIGHT = 1080
+BLUE = 0, 188, 255
+GREY = 32, 78, 81
 clock = pygame.time.Clock()
+squid = player.Player(40, 40, 426, 455,"Images/SquidWalk.png")
+eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png")
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
 except:
-    screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN, 0)
+    WIDTH = 1366
+    HEIGHT = 768
+    screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN, 0)
 
-squid = player.Player(400, 0, 426, 455,"Images/SquidWalk.png")
-eel = player.Player(400, 0, 426, 455,"Images/EelWalk.png")
+playZoneWidth = WIDTH - 80
+playZoneHeight = HEIGHT - 180
+playZone = pygame.draw.rect(screen, BLUE, (40, 40, playZoneWidth, playZoneHeight))
+wall1 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
+wall2 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
+wall3 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
+wall4 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
 
-movex, movey = 0, 0
 
 while True:
 
     pressed = pygame.key.get_pressed()
-    screen.fill((WHITE))
-    clock.tick(40)
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -34,40 +42,41 @@ while True:
         pygame.quit()
         sys.exit()
 
-    if pressed[K_UP] and squid.y > 0:
-        squid.y -= 10
-    elif pressed[K_DOWN] and squid.y < HEIGHT:
-        squid.y += 10
-    if pressed[K_RIGHT] and squid.x < WIDTH:
-        squid.x += 10
+    screen.fill((WHITE))
+    pygame.draw.rect(screen, BLUE, playZone)
+
+    if pressed[K_UP] and squid.y > 40:
+        squid.y -= 5
+    elif pressed[K_DOWN] and squid.y < playZoneHeight - squid.height + 40:
+        squid.y += 5
+    if pressed[K_RIGHT] and squid.x < playZoneWidth - squid.width + 40:
+        squid.x += 5
         squid.render(screen)
-    elif pressed[K_LEFT] and squid.x > 0:
-        squid.x += -10
+    elif pressed[K_LEFT] and squid.x > 40:
+        squid.x -= 5
         flippedImage = pygame.transform.flip(squid.images, 1, 0)
         screen.blit(flippedImage, (squid.x, squid.y), ((squid.numImages - squid.currentImage) * squid.width, 0, squid.width, squid.height))
     else:
         squid.currentImage = 0
         squid.render(screen)
 
-    if pressed[K_w] and eel.y > 0:
-        eel.y -= 10
-    elif pressed[K_s] and eel.y < HEIGHT:
-        eel.y += 10
-    if pressed[K_d] and eel.x < WIDTH:
-        eel.x += 10
+    if pressed[K_w] and eel.y > 40:
+        eel.y -= 5
+    elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
+        eel.y += 5
+    if pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
+        eel.x += 5
         eel.render(screen)
-    elif pressed[K_a] and eel.x > 0:
-        eel.x += -10
+    elif pressed[K_a] and eel.x > 40:
+        eel.x -= 5
         flippedImage = pygame.transform.flip(eel.images, 1, 0)
         screen.blit(flippedImage, (eel.x, eel.y), ((eel.numImages - eel.currentImage) * eel.width, 0, eel.width, eel.height))
     else:
         eel.currentImage = 0
         eel.render(screen)
 
-    squid.x += movex
-    eel.x += movex
-
     squid.update()
     eel.update()
 
+    clock.tick(40)
     pygame.display.update()

@@ -5,11 +5,12 @@ class Player:
     def __init__(self, x, y, width, height, imagePath):
         self.x = x
         self.y = y
-        self.width = width
-        self.height = height
+        self.width = width/4
+        self.height = height/4
         self.velocity = 0
 
         self.images = pygame.image.load(imagePath)
+        self.images = pygame.transform.scale(self.images, (self.width*8, self.height))
         self.numImages = 7
         self.currentImage = 0
 

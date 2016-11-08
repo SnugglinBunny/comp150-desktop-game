@@ -7,7 +7,6 @@ pygame.init()
 WHITE = 255, 255, 255
 WIDTH = 1920
 HEIGHT = 1080
-#gravity = 0
 clock = pygame.time.Clock()
 
 try:
@@ -16,7 +15,7 @@ except:
     screen = pygame.display.set_mode((1366, 768), pygame.FULLSCREEN, 0)
 
 squid = player.Player(400, 0, 426, 455,"Images/SquidWalk.png")
-eel = player.Player(400, 0, 426, 455,"Images/SquidWalk.png")
+eel = player.Player(400, 0, 426, 455,"Images/EelWalk.png")
 
 movex, movey = 0, 0
 

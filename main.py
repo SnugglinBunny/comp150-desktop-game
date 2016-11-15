@@ -8,6 +8,7 @@ WHITE = 255, 255, 255
 WIDTH = 1920
 HEIGHT = 1080
 BLUE = 0, 188, 255
+LBLUE = 0, 100, 200
 BLACK = 0, 0, 0
 GREY = 32, 78, 81
 clock = pygame.time.Clock()
@@ -52,7 +53,7 @@ while True:
         pygame.quit()
         sys.exit()
 
-    screen.fill((WHITE))
+    screen.fill((LBLUE))
     pygame.draw.rect(screen, BLUE, playZone)
 
     if pressed[K_RCTRL] and inkTimer == 0:
@@ -71,6 +72,11 @@ while True:
         if squid.inkCounter < 40:
             squid.inkCounter += 1
             squidInk = pygame.draw.circle(screen, BLACK, (ink_x, ink_y), squid.height + (squid.inkCounter * 2) , squid.width + (squid.inkCounter * 2))
+            if pygame.Rect.colliderect(squidInk, eel.rect):
+                eel.health -= 20
+                eel.checkHealth()
+                ink = False
+                print 'EEL HP: ', eel.health
         else:
             ink = False
             squid.inkCounter = 0
@@ -80,6 +86,11 @@ while True:
         if eel.counter < 20:
             eel.counter += 1
             eel.speed = 15
+            if pygame.Rect.colliderect(squid.rect, eel.rect):
+                squid.health -= 20
+                squid.checkHealth()
+                charge = False
+                print 'SQUID HP: ', squid.health
         else:
             charge = False
             eel.counter = 0

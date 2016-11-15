@@ -15,7 +15,11 @@ class Player:
         self.currentImage = 0
         self.counter = 0
         self.inkCounter = 0
+        self.health = 100
 
+    def checkHealth(self):
+        if self.health == 0:
+            print 'You are dead gg.'
 
     def update(self):
         self.y -= self.velocity

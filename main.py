@@ -11,6 +11,9 @@ BLUE = 0, 188, 255
 BLUEalpha = 0, 188, 255, 0
 GREY = 32, 78, 81
 clock = pygame.time.Clock()
+counter = 0
+charge = False
+chargeTimer = 0
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -53,10 +56,12 @@ while True:
     else:
         squid.speed = 5
 
-    # eel wall collisions
+    # eel speed changes
     if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):
         eel.speed = 2
-    else:
+    elif pressed[K_SPACE] and chargeTimer == 0:
+        charge = True
+    elif charge == False:
         eel.speed = 5
 
     #Player Collisions
@@ -64,6 +69,7 @@ while True:
         eel.speed = 2
         squid.speed = 2
 
+    # squid movement
     if pressed[K_UP] and squid.y > 40:
         squid.y -= squid.speed
     elif pressed[K_DOWN] and squid.y < playZoneHeight - squid.height + 40:
@@ -79,6 +85,7 @@ while True:
         squid.currentImage = 0
         squid.render(screen)
 
+    # eel movement
     if pressed[K_w] and eel.y > 40:
         eel.y -= eel.speed
     elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
@@ -94,6 +101,18 @@ while True:
         eel.currentImage = 0
         eel.render(screen)
 
+    if charge == True:
+        chargeTimer = 100
+        if counter < 20:
+            counter += 1
+            eel.speed = 15
+        else:
+            charge = False
+            counter = 0
+
+    if chargeTimer > 0:
+        chargeTimer -= 1
+        print chargeTimer
 
     squid.update()
     eel.update()

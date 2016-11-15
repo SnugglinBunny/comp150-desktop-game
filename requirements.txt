@@ -1,1 +1,1 @@
-pip install pygame==1.9.1release --allow-external pygame --allow-unverified pygame
+pip install -r pygame

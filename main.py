@@ -39,6 +39,22 @@ ink_x = 10000
 ink_y = 10000
 squidInk = pygame.draw.circle(screen, BLACK, (ink_x, ink_y), squid.height * 2, squid.width * 2)
 
+
+def text_objects(text, font):
+    textSurface = font.render(text, True, BLACK)
+    return textSurface, textSurface.get_rect()
+
+
+def message_display(text):
+    largeText = pygame.font.Font(None, 75)
+    TextSurf, TextRect = text_objects(text, largeText)
+    TextRect.center = ((250),(HEIGHT - 100))
+    screen.blit(TextSurf, TextRect)
+
+
+
+
+
 while True:
     squid.rect = pygame.draw.rect(screen, BLUE, (squid.x, squid.y, squid.width, squid.height))
     eel.rect = pygame.draw.rect(screen, BLUE, (eel.x, eel.y, eel.width, eel.height))
@@ -82,13 +98,25 @@ while True:
             eel.counter += 1
             eel.speed = 15
             if pygame.Rect.colliderect(squid.rect, eel.rect):
-                squid.health -= 20
+                squid.health -= 100
                 squid.checkHealth()
                 charge = False
                 print 'SQUID HP: ', squid.health
         else:
             charge = False
             eel.counter = 0
+
+    message_display('Squid HP: ' + str(squid.health))
+
+    if squid.health <= 0:
+        message_display('rekt, press enter to restart')
+        if pressed[K_RETURN]:
+            squid.x = (playZoneWidth - (426/3) + 80)
+            squid.y = (playZoneHeight - (455/3) + 80)
+            eel.x = 40
+            eel.y = 40
+            squid.health = 100
+
 
     if chargeTimer > 0:
         chargeTimer -= 1
@@ -101,7 +129,7 @@ while True:
         eel.speed = 2
     elif pygame.Rect.colliderect(squidInk, eel.rect) and squid.inkCounter != 0:
         eel.speed = 2
-    elif pressed[K_SPACE] and chargeTimer == 0:
+    elif pressed[K_SPACE] and chargeTimer == 0 and not pygame.Rect.colliderect(squid.rect, eel.rect):
         charge = True
     elif charge == False:
         eel.speed = 5
@@ -145,7 +173,6 @@ while True:
 
     squid.update()
     eel.update()
-
 
     pygame.draw.rect(screen, GREY, wall1)
     pygame.draw.rect(screen, GREY, wall2)

@@ -72,11 +72,6 @@ while True:
         if squid.inkCounter < 40:
             squid.inkCounter += 1
             squidInk = pygame.draw.circle(screen, BLACK, (ink_x, ink_y), squid.height + (squid.inkCounter * 2) , squid.width + (squid.inkCounter * 2))
-            if pygame.Rect.colliderect(squidInk, eel.rect):
-                eel.health -= 20
-                eel.checkHealth()
-                ink = False
-                print 'EEL HP: ', eel.health
         else:
             ink = False
             squid.inkCounter = 0

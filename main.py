@@ -11,9 +11,10 @@ BLUE = 0, 188, 255
 BLACK = 0, 0, 0
 GREY = 32, 78, 81
 clock = pygame.time.Clock()
-counter = 0
 charge = False
 chargeTimer = 0
+ink = False
+inkTimer = 0
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -35,6 +36,7 @@ wall4 = pygame.draw.rect(screen, GREY, (910, 590, 440, 40))
 
 ink_x = 10000
 ink_y = 10000
+squidInk = pygame.draw.circle(screen, BLACK, (ink_x, ink_y), squid.height * 2, squid.width * 2)
 
 while True:
     squid.rect = pygame.draw.rect(screen, BLUE, (squid.x, squid.y, squid.width, squid.height))
@@ -53,14 +55,10 @@ while True:
     screen.fill((WHITE))
     pygame.draw.rect(screen, BLUE, playZone)
 
-    if pressed[K_RCTRL]:
-        # squid.circle = pygame.draw.circle(screen, BLACK, (squid.x + squid.width / 2, squid.y + squid.height),
-        #                               squid.height * 2, squid.width * 2)
+    if pressed[K_RCTRL] and inkTimer == 0:
         ink_x = squid.x + squid.width / 2
         ink_y = squid.y + squid.height
-
-    squid.ink = pygame.draw.circle(screen, BLACK, (ink_x, ink_y),
-                                      squid.height * 2, squid.width * 2)
+        ink = True
 
     # squid wall collisions
     if pygame.Rect.colliderect(wall1, squid.rect) or pygame.Rect.colliderect(wall2, squid.rect) or pygame.Rect.colliderect(wall3, squid.rect) or pygame.Rect.colliderect(wall4, squid.rect):
@@ -68,8 +66,34 @@ while True:
     else:
         squid.speed = 5
 
+    if ink == True:
+        inkTimer = 100
+        if squid.inkCounter < 40:
+            squid.inkCounter += 1
+            squidInk = pygame.draw.circle(screen, BLACK, (ink_x, ink_y), squid.height + (squid.inkCounter * 2) , squid.width + (squid.inkCounter * 2))
+        else:
+            ink = False
+            squid.inkCounter = 0
+
+    if charge == True:
+        chargeTimer = 100
+        if eel.counter < 20:
+            eel.counter += 1
+            eel.speed = 15
+        else:
+            charge = False
+            eel.counter = 0
+
+    if chargeTimer > 0:
+        chargeTimer -= 1
+
+    if inkTimer > 0:
+        inkTimer -= 1
+
     # eel speed changes
-    if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect) or pygame.Rect.colliderect(squid.ink, eel.rect):
+    if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):
+        eel.speed = 2
+    elif pygame.Rect.colliderect(squidInk, eel.rect) and squid.inkCounter != 0:
         eel.speed = 2
     elif pressed[K_SPACE] and chargeTimer == 0:
         charge = True
@@ -112,19 +136,6 @@ while True:
     else:
         eel.currentImage = 0
         eel.render(screen)
-
-    if charge == True:
-        chargeTimer = 100
-        if counter < 20:
-            counter += 1
-            eel.speed = 15
-        else:
-            charge = False
-            counter = 0
-
-    if chargeTimer > 0:
-        chargeTimer -= 1
-        print chargeTimer
 
     squid.update()
     eel.update()

@@ -13,6 +13,8 @@ class Player:
         self.images = pygame.transform.scale(self.images, (self.width*8, self.height))
         self.numImages = 7
         self.currentImage = 0
+        self.counter = 0
+        self.inkCounter = 0
 
 
     def update(self):

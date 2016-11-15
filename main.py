@@ -11,8 +11,6 @@ BLUE = 0, 188, 255
 BLUEalpha = 0, 188, 255, 0
 GREY = 32, 78, 81
 clock = pygame.time.Clock()
-squid = player.Player(40, 40, 426, 455,"Images/SquidWalk.png")
-eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png")
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -24,16 +22,13 @@ except:
 playZoneWidth = WIDTH - 80
 playZoneHeight = HEIGHT - 180
 playZone = pygame.draw.rect(screen, BLUE, (40, 40, playZoneWidth, playZoneHeight))
-
+squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png")
+eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png")
 
 wall1 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
 wall2 = pygame.draw.rect(screen, GREY, (1550, 220, 40, 460))
 wall3 = pygame.draw.rect(screen, GREY, (570, 270, 440, 40))
 wall4 = pygame.draw.rect(screen, GREY, (910, 590, 440, 40))
-
-
-#squid.rect = pygame.draw.rect(screen, BLUE, (squid.x, squid.y, squid.width, squid.height))
-
 
 while True:
     squid.rect = pygame.draw.rect(screen, BLUE, (squid.x, squid.y, squid.width, squid.height))
@@ -63,6 +58,11 @@ while True:
         eel.speed = 2
     else:
         eel.speed = 5
+
+    #Player Collisions
+    if pygame.Rect.colliderect(squid.rect, eel.rect):
+        eel.speed = 2
+        squid.speed = 2
 
     if pressed[K_UP] and squid.y > 40:
         squid.y -= squid.speed
@@ -104,7 +104,6 @@ while True:
     pygame.draw.rect(screen, GREY, wall3)
     pygame.draw.rect(screen, GREY, wall4)
 
-    #squid.rect = pygame.draw.rect(screen, BLUE, (squid.x, squid.y, squid.width, squid.height))
     pygame.display.update(squid.rect)
 
     clock.tick(40)

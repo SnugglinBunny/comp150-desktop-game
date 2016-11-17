@@ -30,10 +30,11 @@ playZone = pygame.draw.rect(screen, BLUE, (40, 40, playZoneWidth, playZoneHeight
 squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png")
 eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png")
 
-wall1 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
-wall2 = pygame.draw.rect(screen, GREY, (1550, 220, 40, 460))
-wall3 = pygame.draw.rect(screen, GREY, (570, 270, 440, 40))
-wall4 = pygame.draw.rect(screen, GREY, (910, 590, 440, 40))
+wallDims = [(330, 220, 40, 460), (1550, 220, 40, 460), (570, 270, 440, 40), (910, 590, 440, 40)]
+walls = []
+
+for wall in wallDims:
+    walls.append(pygame.draw.rect(screen, GREY, wall))
 
 ink_x = 10000
 ink_y = 10000
@@ -78,7 +79,7 @@ while True:
         ink = True
 
     # squid wall collisions
-    if pygame.Rect.colliderect(wall1, squid.rect) or pygame.Rect.colliderect(wall2, squid.rect) or pygame.Rect.colliderect(wall3, squid.rect) or pygame.Rect.colliderect(wall4, squid.rect):
+    if pygame.Rect.colliderect(walls[0], squid.rect) or pygame.Rect.colliderect(walls[1], squid.rect) or pygame.Rect.colliderect(walls[2], squid.rect) or pygame.Rect.colliderect(walls[3], squid.rect):
         squid.speed = 2
     else:
         squid.speed = 5
@@ -129,7 +130,7 @@ while True:
         message_display('Ink Timer: ' + str(int(99.5 - inkCooldown)) + '%', (WIDTH - 250), (HEIGHT - 100))
 
     # eel speed changes
-    if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):
+    if pygame.Rect.colliderect(walls[0], eel.rect) or pygame.Rect.colliderect(walls[1], eel.rect) or pygame.Rect.colliderect(walls[2], eel.rect) or pygame.Rect.colliderect(walls[3], eel.rect):
         eel.speed = 2
     elif pygame.Rect.colliderect(squidInk, eel.rect) and squid.inkCounter != 0:
         eel.speed = 2
@@ -178,10 +179,8 @@ while True:
     squid.update()
     eel.update()
 
-    pygame.draw.rect(screen, GREY, wall1)
-    pygame.draw.rect(screen, GREY, wall2)
-    pygame.draw.rect(screen, GREY, wall3)
-    pygame.draw.rect(screen, GREY, wall4)
+    for i in xrange(4):
+        pygame.draw.rect(screen, GREY, walls[i])
 
     pygame.display.update(squid.rect)
 

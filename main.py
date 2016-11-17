@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 charge = False
 chargeTimer = 0
 ink = False
-inkTimer = 0
+inkCooldown = 0
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -45,10 +45,10 @@ def text_objects(text, font):
     return textSurface, textSurface.get_rect()
 
 
-def message_display(text):
+def message_display(text, x, y):
     largeText = pygame.font.Font(None, 75)
     TextSurf, TextRect = text_objects(text, largeText)
-    TextRect.center = ((250),(HEIGHT - 100))
+    TextRect.center = (x, y)
     screen.blit(TextSurf, TextRect)
 
 
@@ -72,7 +72,7 @@ while True:
     screen.fill((LBLUE))
     pygame.draw.rect(screen, BLUE, playZone)
 
-    if pressed[K_RCTRL] and inkTimer == 0:
+    if pressed[K_RCTRL] and inkCooldown == 0:
         ink_x = squid.x + squid.width / 2
         ink_y = squid.y + squid.height
         ink = True
@@ -84,14 +84,13 @@ while True:
         squid.speed = 5
 
     if ink == True:
-        inkTimer = 100
+        inkCooldown = 100
         if squid.inkCounter < 40:
             squid.inkCounter += 1
             squidInk = pygame.draw.circle(screen, BLACK, (ink_x, ink_y), squid.height + (squid.inkCounter * 2) , squid.width + (squid.inkCounter * 2))
         else:
             ink = False
             squid.inkCounter = 0
-
     if charge == True:
         chargeTimer = 100
         if eel.counter < 20:
@@ -106,8 +105,6 @@ while True:
             charge = False
             eel.counter = 0
 
-    message_display('Squid HP: ' + str(squid.health))
-
     if squid.health <= 0:
         message_display('rekt, press enter to restart')
         if pressed[K_RETURN]:
@@ -121,8 +118,15 @@ while True:
     if chargeTimer > 0:
         chargeTimer -= 1
 
-    if inkTimer > 0:
-        inkTimer -= 1
+    if inkCooldown > 0:
+        inkCooldown -= 0.5
+
+    message_display('Squid HP: ' + str(squid.health), (250),(HEIGHT - 100))
+
+    if inkCooldown == 0:
+        message_display('Ink Timer: Ready', (WIDTH - 250), (HEIGHT - 100))
+    else:
+        message_display('Ink Timer: ' + str(int(99.5 - inkCooldown)) + '%', (WIDTH - 250), (HEIGHT - 100))
 
     # eel speed changes
     if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):

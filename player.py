@@ -15,6 +15,7 @@ class Player:
         self.currentImage = 0
         self.counter = 0
         self.inkCounter = 0
+        self.punchCounter = 0
         self.health = 100
 
     def checkHealth(self):

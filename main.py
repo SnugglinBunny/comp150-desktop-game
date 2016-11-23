@@ -13,9 +13,16 @@ BLACK = 0, 0, 0
 GREY = 32, 78, 81
 clock = pygame.time.Clock()
 charge = False
-chargeTimer = 0
+chargeDamage = True
+chargeCooldown = 0
 ink = False
 inkCooldown = 0
+punchCooldown = 0
+punch = False
+eelWins = False
+squidWins = False
+eelWinCount = 0
+squidWinCount = 0
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -72,6 +79,9 @@ while True:
     screen.fill((LBLUE))
     pygame.draw.rect(screen, BLUE, playZone)
 
+    if pressed[K_KP0] and punchCooldown == 0:
+        punch = True
+
     if pressed[K_RCTRL] and inkCooldown == 0:
         ink_x = squid.x + squid.width / 2
         ink_y = squid.y + squid.height
@@ -83,6 +93,16 @@ while True:
     else:
         squid.speed = 5
 
+    if punch == True:
+        punchCooldown = 100
+        if pygame.Rect.colliderect(squid.rect, eel.rect):
+            eel.health -= 20
+            eel.checkHealth()
+            punch = False
+        else:
+            punch = False
+            squid.punchCounter = 0
+
     if ink == True:
         inkCooldown = 100
         if squid.inkCounter < 40:
@@ -91,89 +111,129 @@ while True:
         else:
             ink = False
             squid.inkCounter = 0
+
     if charge == True:
-        chargeTimer = 100
+        chargeCooldown = 100
         if eel.counter < 20:
             eel.counter += 1
             eel.speed = 15
             if pygame.Rect.colliderect(squid.rect, eel.rect):
-                squid.health -= 100
+                if chargeDamage == True:
+                    squid.health -= 34
+                    chargeDamage = False
                 squid.checkHealth()
-                charge = False
+                # charge = False
                 print 'SQUID HP: ', squid.health
         else:
             charge = False
+            chargeDamage = True
             eel.counter = 0
 
     if squid.health <= 0:
-        message_display('rekt, press enter to restart')
+        eelWins = True
+    if eelWins == True:
+        message_display('squid got rekt, press enter to restart', (WIDTH/2), (HEIGHT/2 - 100))
         if pressed[K_RETURN]:
             squid.x = (playZoneWidth - (426/3) + 80)
             squid.y = (playZoneHeight - (455/3) + 80)
             eel.x = 40
             eel.y = 40
             squid.health = 100
+            eel.health = 100
+            message_display(' ', (WIDTH / 2), (HEIGHT / 2 - 100))
+            eelWins = False
 
 
-    if chargeTimer > 0:
-        chargeTimer -= 1
+
+
+    if eel.health <= 0:
+        squidWins = True
+    if squidWins == True:
+        eel_rect_text = "eel got rekt, press enter to restart"
+        message_display(eel_rect_text, (WIDTH/2), (HEIGHT/2 - 100))
+        if pressed[K_RETURN]:
+            squid.x = (playZoneWidth - (426/3) + 80)
+            squid.y = (playZoneHeight - (455/3) + 80)
+            eel.x = 40
+            eel.y = 40
+            eel.health = 100
+            squid.health = 100
+            squidWins = False
+
+
+
+
+
+    if chargeCooldown > 0:
+        chargeCooldown -= 1
 
     if inkCooldown > 0:
         inkCooldown -= 0.5
 
-    message_display('Squid HP: ' + str(squid.health), (250),(HEIGHT - 100))
+    if punchCooldown > 0:
+        punchCooldown -= 2
+
+    message_display('Squid HP: ' + str(squid.health), (200),(HEIGHT - 100))
+    message_display('Eel HP: ' + str(eel.health), (550), (HEIGHT - 100))
 
     if inkCooldown == 0:
-        message_display('Ink Timer: Ready', (WIDTH - 250), (HEIGHT - 100))
+        message_display('Ink: Ready', (WIDTH - 250), (HEIGHT - 100))
     else:
         message_display('Ink Timer: ' + str(int(99.5 - inkCooldown)) + '%', (WIDTH - 250), (HEIGHT - 100))
+
+    if chargeCooldown == 0:
+        message_display('Charge: Ready', (WIDTH - 800), (HEIGHT - 100))
+    else:
+        message_display('Charge Timer: ' + str(int(99.5 - chargeCooldown)) + '%', (WIDTH - 800), (HEIGHT - 100))
 
     # eel speed changes
     if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):
         eel.speed = 2
     elif pygame.Rect.colliderect(squidInk, eel.rect) and squid.inkCounter != 0:
         eel.speed = 2
-    elif pressed[K_SPACE] and chargeTimer == 0 and not pygame.Rect.colliderect(squid.rect, eel.rect):
+    elif pressed[K_SPACE] and chargeCooldown == 0:
         charge = True
     elif charge == False:
         eel.speed = 5
 
     #Player Collisions
-    if pygame.Rect.colliderect(squid.rect, eel.rect):
-        eel.speed = 2
-        squid.speed = 2
+    # if pygame.Rect.colliderect(squid.rect, eel.rect):
+    #     eel.speed = 2
+    #     squid.speed = 2
+
 
     # squid movement
-    if pressed[K_UP] and squid.y > 40:
-        squid.y -= squid.speed
-    elif pressed[K_DOWN] and squid.y < playZoneHeight - squid.height + 40:
-        squid.y += squid.speed
-    if pressed[K_RIGHT] and squid.x < playZoneWidth - squid.width + 40:
-        squid.x += squid.speed
-        squid.render(screen)
-    elif pressed[K_LEFT] and squid.x > 40:
-        squid.x -= squid.speed
-        flippedImage = pygame.transform.flip(squid.images, 1, 0)
-        screen.blit(flippedImage, (squid.x, squid.y), ((squid.numImages - squid.currentImage) * squid.width, 0, squid.width, squid.height))
-    else:
-        squid.currentImage = 0
-        squid.render(screen)
+    if not squid.health <= 0 and not eel.health <= 0:
+        if pressed[K_UP] and squid.y > 40:
+            squid.y -= squid.speed
+        elif pressed[K_DOWN] and squid.y < playZoneHeight - squid.height + 40:
+            squid.y += squid.speed
+        if pressed[K_RIGHT] and squid.x < playZoneWidth - squid.width + 40:
+            squid.x += squid.speed
+            squid.render(screen)
+        elif pressed[K_LEFT] and squid.x > 40:
+            squid.x -= squid.speed
+            flippedImage = pygame.transform.flip(squid.images, 1, 0)
+            screen.blit(flippedImage, (squid.x, squid.y), ((squid.numImages - squid.currentImage) * squid.width, 0, squid.width, squid.height))
+        else:
+            squid.currentImage = 0
+            squid.render(screen)
 
-    # eel movement
-    if pressed[K_w] and eel.y > 40:
-        eel.y -= eel.speed
-    elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
-        eel.y += eel.speed
-    if pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
-        eel.x += eel.speed
-        eel.render(screen)
-    elif pressed[K_a] and eel.x > 40:
-        eel.x -= eel.speed
-        flippedImage = pygame.transform.flip(eel.images, 1, 0)
-        screen.blit(flippedImage, (eel.x, eel.y), ((eel.numImages - eel.currentImage) * eel.width, 0, eel.width, eel.height))
-    else:
-        eel.currentImage = 0
-        eel.render(screen)
+        # eel movement
+        if pressed[K_w] and eel.y > 40:
+            eel.y -= eel.speed
+        elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
+            eel.y += eel.speed
+        if pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
+            eel.x += eel.speed
+            eel.render(screen)
+        elif pressed[K_a] and eel.x > 40:
+            eel.x -= eel.speed
+            flippedImage = pygame.transform.flip(eel.images, 1, 0)
+            screen.blit(flippedImage, (eel.x, eel.y), ((eel.numImages - eel.currentImage) * eel.width, 0, eel.width, eel.height))
+        else:
+            eel.currentImage = 0
+            eel.render(screen)
 
     squid.update()
     eel.update()

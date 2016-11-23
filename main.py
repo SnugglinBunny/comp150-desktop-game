@@ -18,11 +18,13 @@ chargeCooldown = 0
 ink = False
 inkCooldown = 0
 punchCooldown = 0
+electrifyCooldown = 0
 punch = False
 eelWins = False
 squidWins = False
 eelWinCount = 0
 squidWinCount = 0
+electrify = False
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -79,6 +81,11 @@ while True:
     screen.fill((LBLUE))
     pygame.draw.rect(screen, BLUE, playZone)
 
+    if pressed[K_e]:
+        electrify = True
+    else:
+        electrify = False
+
     if pressed[K_KP0] and punchCooldown == 0:
         punch = True
 
@@ -92,6 +99,10 @@ while True:
         squid.speed = 2
     else:
         squid.speed = 5
+
+    if electrify == True:
+        if pygame.Rect.colliderect(squid.rect, eel.rect):
+            squid.health -= 0.2
 
     if punch == True:
         punchCooldown = 100
@@ -123,7 +134,7 @@ while True:
                     chargeDamage = False
                 squid.checkHealth()
                 # charge = False
-                print 'SQUID HP: ', squid.health
+            print 'SQUID HP: ', squid.health
         else:
             charge = False
             chargeDamage = True
@@ -172,6 +183,7 @@ while True:
 
     if punchCooldown > 0:
         punchCooldown -= 2
+
 
     message_display('Squid HP: ' + str(squid.health), (200),(HEIGHT - 100))
     message_display('Eel HP: ' + str(eel.health), (550), (HEIGHT - 100))

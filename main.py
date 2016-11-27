@@ -13,7 +13,6 @@ BLACK = 0, 0, 0
 GREY = 32, 78, 81
 clock = pygame.time.Clock()
 charge = False
-chargeDamage = True
 chargeCooldown = 0
 ink = False
 inkCooldown = 0
@@ -202,8 +201,8 @@ while True:
     if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):
         eel.speed = 4
     elif pygame.Rect.colliderect(squidInk, eel.rect) and squid.inkCounter != 0:
-        eel.speed = 4
-    elif pressed[K_SPACE] and chargeCooldown == 0:
+        eel.speed = 2
+    elif pressed[K_SPACE] and chargeCooldown == 0 and not pygame.Rect.colliderect(squid.rect, eel.rect):
         charge = True
     elif charge == False:
         eel.speed = 7

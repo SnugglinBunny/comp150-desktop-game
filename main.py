@@ -81,7 +81,7 @@ while True:
     screen.fill((LBLUE))
     pygame.draw.rect(screen, BLUE, playZone)
 
-    if pressed[K_e]:
+    if pressed[K_RALT]:
         electrify = True
     else:
         electrify = False
@@ -231,21 +231,6 @@ while True:
             squid.render(screen)
 
         # eel movement (images)
-
-        # if pressed[K_w] and eel.y > 40:
-        #     eel.images = eel.imageUp
-        #     eel.width = 40
-        # elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
-        #     eel.images = pygame.transform.flip(eel.imageUp, 0, 1)
-        #     eel.width = 40
-        # elif pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
-        #     eel.images = eel.imageRight
-        #     eel.width = 106
-        # elif pressed[K_a] and eel.x > 40:
-        #     eel.images = pygame.transform.flip(eel.imageRight, 1, 0)
-        #     eel.width = 106
-        # else:
-        #     eel.currentImage = 0
 
         if electrify == True:
             eel.images = eel.imagesElectric

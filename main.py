@@ -36,8 +36,8 @@ except:
 playZoneWidth = WIDTH - 80
 playZoneHeight = HEIGHT - 180
 playZone = pygame.draw.rect(screen, BLUE, (40, 40, playZoneWidth, playZoneHeight))
-squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png", "Images/EelWalkUp.png", "Images/EelwalkElectric.png", "Images/EelWalkUpElectric.png")
-eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png", "Images/EelWalkUpSmall.png", "Images/EelWalkElectric.png", "Images/EelWalkUpElectric.png")
+squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png", "Images/EelWalkUp.png", "Images/EelwalkElectric.png", "Images/EelWalkUpSmallElectric.png")
+eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png", "Images/EelWalkUpSmall.png", "Images/EelWalkElectric.png", "Images/EelWalkUpSmallElectric.png")
 
 wall1 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
 wall2 = pygame.draw.rect(screen, GREY, (1550, 220, 40, 460))
@@ -89,7 +89,7 @@ while True:
     if pressed[K_KP0] and punchCooldown == 0:
         punch = True
 
-    if pressed[K_RCTRL] and inkCooldown == 0:
+    if pressed[K_KP_PERIOD] and inkCooldown == 0:
         ink_x = squid.x + squid.width / 2
         ink_y = squid.y + squid.height
         ink = True

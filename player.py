@@ -17,6 +17,8 @@ class Player:
         self.imageUp = pygame.transform.scale(self.imageUp, (40 * 8, self.height))
         self.imagesElectric = pygame.image.load(imagePathElectric)
         self.imagesElectric = pygame.transform.scale(self.imagesElectric, (self.width * 8, self.height))
+        self.imagesElectricRight = pygame.image.load(imagePathElectric)
+        self.imagesElectricRight = pygame.transform.scale(self.imagesElectric, (self.width * 8, self.height))
         self.imagesElectricUp = pygame.image.load(imagePathElectricUp)
         self.imagesElectricUp = pygame.transform.scale(self.imagesElectricUp, (40 * 8, self.height))
         self.numImages = 7

@@ -25,6 +25,7 @@ eelWinCount = 0
 squidWinCount = 0
 electrify = False
 
+
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
 except:
@@ -35,8 +36,8 @@ except:
 playZoneWidth = WIDTH - 80
 playZoneHeight = HEIGHT - 180
 playZone = pygame.draw.rect(screen, BLUE, (40, 40, playZoneWidth, playZoneHeight))
-squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png", "Images/EelWalkUp.png")
-eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png", "Images/EelWalkUpSmall.png")
+squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png", "Images/EelWalkUp.png", "Images/EelwalkElectric.png", "Images/EelWalkUpElectric.png")
+eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png", "Images/EelWalkUpSmall.png", "Images/EelWalkElectric.png", "Images/EelWalkUpElectric.png")
 
 wall1 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
 wall2 = pygame.draw.rect(screen, GREY, (1550, 220, 40, 460))
@@ -101,7 +102,7 @@ while True:
 
     if electrify == True:
         if pygame.Rect.colliderect(squid.rect, eel.rect):
-            squid.health -= 0.2
+            squid.health -= 0.5
 
     if punch == True:
         punchCooldown = 100
@@ -230,20 +231,54 @@ while True:
             squid.render(screen)
 
         # eel movement (images)
-        if pressed[K_w] and eel.y > 40:
-            eel.images = eel.imageUp
-            eel.width = 40
-        elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
-            eel.images = pygame.transform.flip(eel.imageUp, 0, 1)
-            eel.width = 40
-        elif pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
-            eel.images = eel.imageRight
-            eel.width = 106
-        elif pressed[K_a] and eel.x > 40:
-            eel.images = pygame.transform.flip(eel.imageRight, 1, 0)
-            eel.width = 106
+
+        # if pressed[K_w] and eel.y > 40:
+        #     eel.images = eel.imageUp
+        #     eel.width = 40
+        # elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
+        #     eel.images = pygame.transform.flip(eel.imageUp, 0, 1)
+        #     eel.width = 40
+        # elif pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
+        #     eel.images = eel.imageRight
+        #     eel.width = 106
+        # elif pressed[K_a] and eel.x > 40:
+        #     eel.images = pygame.transform.flip(eel.imageRight, 1, 0)
+        #     eel.width = 106
+        # else:
+        #     eel.currentImage = 0
+
+        if electrify == True:
+            eel.images = eel.imagesElectric
+
+            if pressed[K_w] and eel.y > 40:
+                eel.images = eel.imagesElectricUp
+                eel.width = 40
+            elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
+                eel.images = pygame.transform.flip(eel.imagesElectricUp, 0, 1)
+                eel.width = 40
+            elif pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
+                eel.images = eel.imagesElectric
+                eel.width = 106
+            elif pressed[K_a] and eel.x > 40:
+                eel.images = pygame.transform.flip(eel.imagesElectric, 1, 0)
+                eel.width = 106
         else:
-            eel.currentImage = 0
+            if pressed[K_w] and eel.y > 40:
+                eel.images = eel.imageUp
+                eel.width = 40
+            elif pressed[K_s] and eel.y < playZoneHeight - eel.height + 40:
+                eel.images = pygame.transform.flip(eel.imageUp, 0, 1)
+                eel.width = 40
+            elif pressed[K_d] and eel.x < playZoneWidth - eel.width + 40:
+                eel.images = eel.imageRight
+                eel.width = 106
+            elif pressed[K_a] and eel.x > 40:
+                eel.images = pygame.transform.flip(eel.imageRight, 1, 0)
+                eel.width = 106
+            else:
+                eel.currentImage = 0
+
+
 
         # eel movement (movement)
         if pressed[K_w] and eel.y > 40:

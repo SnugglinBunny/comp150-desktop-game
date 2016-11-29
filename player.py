@@ -2,7 +2,7 @@ import pygame
 
 class Player:
 
-    def __init__(self, x, y, width, height, imagePath, imagePathUp):
+    def __init__(self, x, y, width, height, imagePath, imagePathUp, imagePathElectric, imagePathElectricUp):
         self.x = x
         self.y = y
         self.width = width/4
@@ -15,6 +15,10 @@ class Player:
         self.imageRight = pygame.transform.scale(self.images, (self.width * 8, self.height))
         self.imageUp = pygame.image.load(imagePathUp)
         self.imageUp = pygame.transform.scale(self.imageUp, (40 * 8, self.height))
+        self.imagesElectric = pygame.image.load(imagePathElectric)
+        self.imagesElectric = pygame.transform.scale(self.imagesElectric, (self.width * 8, self.height))
+        self.imagesElectricUp = pygame.image.load(imagePathElectricUp)
+        self.imagesElectricUp = pygame.transform.scale(self.imagesElectricUp, (40 * 8, self.height))
         self.numImages = 7
         self.currentImage = 0
         self.counter = 0

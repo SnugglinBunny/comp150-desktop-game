@@ -106,7 +106,7 @@ while True:
     if punch == True:
         punchCooldown = 100
         if pygame.Rect.colliderect(squid.rect, eel.rect):
-            eel.health -= 20
+            eel.health -= 25
             eel.checkHealth()
             punch = False
         else:
@@ -129,7 +129,7 @@ while True:
             eel.speed = 15
             if pygame.Rect.colliderect(squid.rect, eel.rect):
                 if chargeDamage == True:
-                    squid.health -= 34
+                    squid.health -= 20
                     chargeDamage = False
                 squid.checkHealth()
                 # charge = False
@@ -255,9 +255,10 @@ while True:
         elif pressed[K_a] and eel.x > 40:
             eel.x -= eel.speed
 
-    eel.render(screen)
-    squid.update()
-    eel.update()
+    if squidWins != True and eelWins != True:
+        eel.render(screen)
+        squid.update()
+        eel.update()
 
     pygame.draw.rect(screen, GREY, wall1)
     pygame.draw.rect(screen, GREY, wall2)

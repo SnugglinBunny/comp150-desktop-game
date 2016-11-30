@@ -24,6 +24,7 @@ squidWins = False
 eelWinCount = 0
 squidWinCount = 0
 electrify = False
+chargeDamage = True
 
 
 try:
@@ -81,7 +82,7 @@ while True:
     screen.fill((LBLUE))
     pygame.draw.rect(screen, BLUE, playZone)
 
-    if pressed[K_RALT]:
+    if pressed[K_COMMA]:
         electrify = True
     else:
         electrify = False
@@ -101,6 +102,7 @@ while True:
         squid.speed = 5
 
     if electrify == True:
+        eel.health -= 0.1
         if pygame.Rect.colliderect(squid.rect, eel.rect):
             squid.health -= 0.5
 
@@ -130,11 +132,11 @@ while True:
             eel.speed = 15
             if pygame.Rect.colliderect(squid.rect, eel.rect):
                 if chargeDamage == True:
-                    squid.health -= 20
+                    squid.health -= 15
                     chargeDamage = False
                 squid.checkHealth()
                 # charge = False
-            print 'SQUID HP: ', squid.health
+            #print 'SQUID HP: ', squid.health
         else:
             charge = False
             chargeDamage = True
@@ -185,6 +187,7 @@ while True:
         punchCooldown -= 2
 
 
+
     message_display('Squid HP: ' + str(squid.health), (200),(HEIGHT - 100))
     message_display('Eel HP: ' + str(eel.health), (550), (HEIGHT - 100))
 
@@ -198,13 +201,18 @@ while True:
     else:
         message_display('Charge Timer: ' + str(int(99.5 - chargeCooldown)) + '%', (WIDTH - 800), (HEIGHT - 100))
 
+    if punchCooldown == 0:
+        message_display('Punch: Ready', (WIDTH - 250), (HEIGHT - 40))
+    else:
+        message_display(('Punch Timer: ' + str(int(99.5 - punchCooldown)) + '%'), (WIDTH - 250), (HEIGHT - 40))
+
     # eel speed changes
     if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):
         eel.speed = 4
     elif pygame.Rect.colliderect(squidInk, eel.rect) and squid.inkCounter != 0:
         eel.speed = 2
-        eel.health -= 0.5
-    elif pressed[K_SPACE] and chargeCooldown == 0 and not pygame.Rect.colliderect(squid.rect, eel.rect):
+        eel.health -= 0.2
+    elif pressed[K_SPACE] and chargeCooldown == 0:
         charge = True
     elif charge == False:
         eel.speed = 7

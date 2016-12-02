@@ -5,11 +5,11 @@ import player
 import winsound
 
 pygame.init()
-pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
+pygame.mixer.init(frequency=22050, size=-16, channels=1, buffer=4096)
 
 WHITE = 255, 255, 255
-WIDTH = 1920
-HEIGHT = 1080
+WIDTH = 1536  # 1920
+HEIGHT = 864  # 1080
 BLUE = 0, 188, 255
 LBLUE = 0, 100, 200
 BLACK = 0, 0, 0
@@ -29,6 +29,8 @@ squid_win_count = 0
 electrify = False
 charge_damage = True
 sound_played = False
+eel_is_dead = False
+squid_is_dead = False
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN, 0)
@@ -122,6 +124,16 @@ while True:
         ink = True
         play_sfx('inksound', 0)
 
+    # Checks if player is dead
+    if eel.health <= 0:
+        eel_is_dead = True
+    else:
+        eel_is_dead = False
+    if squid.health <= 0:
+        squid_is_dead = True
+    else:
+        squid_is_dead = False
+
     # squid wall collisions
     if pygame.Rect.colliderect(wall1, squid.rect) or pygame.Rect.colliderect(wall2,
                                                                              squid.rect) or pygame.Rect.colliderect(
@@ -133,12 +145,12 @@ while True:
     if electrify:
         eel.health -= 0.1
         if pygame.Rect.colliderect(squid.rect, eel.rect):
-            squid.health -= 0.5
+            squid.health -= 0.4
 
     if punch:
         punch_cooldown = 100
         if pygame.Rect.colliderect(squid.rect, eel.rect):
-            eel.health -= 10
+            eel.health -= 20
             play_sfx('woosh', 0)
             play_sfx('punch', 0)
             eel.check_health()
@@ -173,7 +185,7 @@ while True:
             charge_damage = True
             eel.counter = 0
 
-    if squid.health <= 0:
+    if squid_is_dead:
         eel_wins = True
     if eel_wins:
         message_display('squid got rekt, press enter to restart', (WIDTH / 2), (HEIGHT / 2 - 100))
@@ -187,7 +199,7 @@ while True:
             message_display(' ', (WIDTH / 2), (HEIGHT / 2 - 100))
             eel_wins = False
 
-    if eel.health <= 0:
+    if eel_is_dead:
         squid_wins = True
     if squid_wins:
         eel_rect_text = "eel got rekt, press enter to restart"
@@ -208,10 +220,17 @@ while True:
         ink_cooldown -= 0.5
 
     if punch_cooldown > 0:
-        punch_cooldown -= 4
+        punch_cooldown -= 2.5
 
-    message_display('Squid HP: ' + str(squid.health), (WIDTH - 220), (HEIGHT - 100))
-    message_display('Eel HP: ' + str(eel.health), 180, (HEIGHT - 100))
+    if squid_is_dead:
+        message_display('Squid HP: DEAD', (WIDTH - 220), (HEIGHT - 100))
+    else:
+        message_display('Squid HP: ' + str(squid.health), (WIDTH - 220), (HEIGHT - 100))
+
+    if eel_is_dead:
+        message_display('Eel HP: DEAD', 180, (HEIGHT - 100))
+    else:
+        message_display('Eel HP: ' + str(eel.health), 180, (HEIGHT - 100))
 
     if ink_cooldown == 0:
         message_display('Ink: Ready', (WIDTH - 550), (HEIGHT - 40))
@@ -243,7 +262,7 @@ while True:
         eel.speed = 7
 
     # squid movement
-    if not squid.health <= 0 and not eel.health <= 0:
+    if not squid_is_dead and not eel_is_dead:
         if pressed[K_UP] and squid.y > 40:
             squid.y -= squid.speed
         elif pressed[K_DOWN] and squid.y < playZoneHeight - squid.height + 40:

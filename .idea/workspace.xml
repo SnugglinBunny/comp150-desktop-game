@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61b7d96e-ba7f-405b-95fb-3cc95d1e10a9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SquidVsEel.iml" afterPath="$PROJECT_DIR$/.idea/SquidVsEel.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sounds/ChargeHit.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sounds/electric.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sounds/inksound.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sounds/melody.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sounds/punch.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sounds/woosh.wav" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
@@ -19,14 +23,12 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SquidVsEel$main.coverage" NAME="main Coverage Results" MODIFIED="1478610407260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/comp150-desktop-game(1)$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1480499934560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration" />
-    <SUITE FILE_PATH="coverage/comp150-desktop-game(1)$notes.coverage" NAME="notes Coverage Results" MODIFIED="1480499750035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration" />
-    <SUITE FILE_PATH="coverage/SquidVsEel$oxo.coverage" NAME="oxo Coverage Results" MODIFIED="1478607093529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/comp110-worksheets/worksheet_D" />
+    <SUITE FILE_PATH="coverage/comp150-desktop-game$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1480687135534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration" />
     <SUITE FILE_PATH="coverage/comp150-desktop-game-new$main.coverage" NAME="main Coverage Results" MODIFIED="1480254116092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/comp150-desktop-game$main.coverage" NAME="main Coverage Results" MODIFIED="1479413102574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/comp150-desktop-game(1)$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1480500857105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration" />
+    <SUITE FILE_PATH="coverage/comp150-desktop-game$main.coverage" NAME="main Coverage Results" MODIFIED="1480691936508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/comp150-desktop-game$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1479210143529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Tinkering Audio" />
-    <SUITE FILE_PATH="coverage/comp150-desktop-game(1)$main.coverage" NAME="main Coverage Results" MODIFIED="1480499744187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SquidVsEel$oxo.coverage" NAME="oxo Coverage Results" MODIFIED="1478607093529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/comp110-worksheets/worksheet_D" />
+    <SUITE FILE_PATH="coverage/comp150-desktop-game$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1480679622017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -37,31 +39,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="noteFrequencies.py" pinned="false" current-in-tab="false">
-        <entry file="file:$PROJECT_DIR$/../../../../..//$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/noteFrequencies.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="notes.py" pinned="false" current-in-tab="false">
-        <entry file="file:$PROJECT_DIR$/../../../../..//$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/notes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
-        <entry file="file:$PROJECT_DIR$/../../../../..//$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/main.py">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+            <state relative-caret-position="3454">
+              <caret line="157" column="54" selection-start-line="157" selection-start-column="54" selection-end-line="157" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/player.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -76,9 +70,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/player.py" />
+        <option value="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/main.py" />
+        <option value="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/notes.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/main.py" />
-        <option value="$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/notes.py" />
       </list>
     </option>
   </component>
@@ -89,9 +83,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -118,22 +113,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="comp150-desktop-game(1)" />
+              <option name="myItemId" value="comp150-desktop-game" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/untitled3/worksheetE.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../untitled3/worksheetE.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -143,7 +138,7 @@
       <recent name="E:\-UNIWORK\Github\comp150-desktop-game-new\Images\Squid" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (3)">
+  <component name="RunManager" selected="Python.main">
     <configuration default="false" name="BillNye" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -223,13 +218,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SquidVsEel" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -451,10 +446,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.main (3)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main" />
         <item index="1" class="java.lang.String" itemvalue="Python.main (2)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.notes" />
-        <item index="3" class="java.lang.String" itemvalue="Python.main" />
+        <item index="2" class="java.lang.String" itemvalue="Python.main (3)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.notes" />
         <item index="4" class="java.lang.String" itemvalue="Python.BillNye" />
       </list>
     </recent_temporary>
@@ -476,20 +471,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.065762006" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32601535" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39956093" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -514,7 +509,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file:$PROJECT_DIR$/../../../../..////tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py</url>
+          <url>file:C:/..////tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py</url>
           <line>243</line>
         </line-breakpoint>
       </breakpoints>
@@ -523,110 +518,83 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../C:/Users/JM190359/comp110-worksheets/worksheet_D/oxo.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/Squid.psd" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
-    <entry file="file:$PROJECT_DIR$/../../../../../C:/Users/JM190359/comp110-worksheets/worksheet_D/oxo.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../C:/Users/JM190359/Tinkering Graphics/BillNye.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../C:/Users/JM190359/Tinkering Audio/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../C:/Users/JM190359/.PyCharm2016.2/system/python_stubs/-762174762/__builtin__.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/EelWalk.png" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../C:/Users/JM190359/PycharmProjects/untitled3/worksheetE.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
-    <entry file="file:$PROJECT_DIR$/../../../../..//$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="138" column="13" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
+    <entry file="file://$PROJECT_DIR$/Images/EelWalk.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$PROJECT_DIR$/player.py">
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../C:/Users/JM190359/comp110-worksheets/worksheet_D/oxo.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/Squid.psd" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/SquidWalk.png" />
+    <entry file="file:C:/../C:/Users/JM190359/comp110-worksheets/worksheet_D/oxo.py" />
+    <entry file="file:C:/../C:/Users/JM190359/Tinkering Graphics/BillNye.py" />
+    <entry file="file:C:/../C:/Users/JM190359/Tinkering Audio/main.py" />
+    <entry file="file:C:/../C:/Users/JM190359/.PyCharm2016.2/system/python_stubs/-762174762/__builtin__.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/Images/EelWalk.png" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../C:/Users/JM190359/PycharmProjects/untitled3/worksheetE.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/player.py" />
+    <entry file="file:C:/../tremictssan.fal.ac.uk/userdata/JM190359/My Documents/comp150-desktop-game(1)/main.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp150-desktop-game/main.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp150-desktop-game/player.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp120-tinkering-audio/NotesGeneration/main.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp120-tinkering-audio/NotesGeneration/noteFrequencies.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp120-tinkering-audio/NotesGeneration/notes.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp120-tinkering-audio/NotesGeneration/notes.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp120-tinkering-audio/NotesGeneration/noteFrequencies.py" />
+    <entry file="file:C:/..//C:/Users/speed/PycharmProjects/comp120-tinkering-audio/NotesGeneration/main.py" />
+    <entry file="file://$PROJECT_DIR$/player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/main.py">
+    <entry file="file://$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/noteFrequencies.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$PROJECT_DIR$/../comp120-tinkering-audio/NotesGeneration/notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-118">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/noteFrequencies.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="92" column="14" selection-start-line="92" selection-start-column="14" selection-end-line="92" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:$PROJECT_DIR$/../../../../..//$USER_HOME$/PycharmProjects/comp120-tinkering-audio/NotesGeneration/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="50" column="41" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="3454">
+          <caret line="157" column="54" selection-start-line="157" selection-start-column="54" selection-end-line="157" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

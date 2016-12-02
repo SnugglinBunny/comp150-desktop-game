@@ -1,12 +1,14 @@
 import pygame, sys
 from pygame.locals import *
 import player
+import winsound
 
 pygame.init()
+pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
 
 WHITE = 255, 255, 255
-WIDTH = 1920
-HEIGHT = 1080
+WIDTH = 1536 #1920
+HEIGHT = 864 #1080
 BLUE = 0, 188, 255
 LBLUE = 0, 100, 200
 BLACK = 0, 0, 0
@@ -25,7 +27,7 @@ eelWinCount = 0
 squidWinCount = 0
 electrify = False
 chargeDamage = True
-
+soundplayed = False
 
 try:
     screen = pygame.display.set_mode((WIDTH, HEIGHT),pygame.FULLSCREEN, 0)
@@ -34,16 +36,25 @@ except:
     HEIGHT = 768
     screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN, 0)
 
+try:  # Background music is loaded here.
+    background = pygame.mixer.Sound("Sounds/melody.wav")
+    background.set_volume(0.02)
+    background.play(loops=-1)
+except pygame.error, message:
+    print "Cannot load sound: " + sound_name
+    raise SystemExit, message
+
 playZoneWidth = WIDTH - 80
 playZoneHeight = HEIGHT - 180
 playZone = pygame.draw.rect(screen, BLUE, (40, 40, playZoneWidth, playZoneHeight))
 squid = player.Player((playZoneWidth - (426/3) + 80), (playZoneHeight - (455/3) + 80), 426, 455,"Images/SquidWalk.png", "Images/EelWalkUp.png", "Images/EelwalkElectric.png", "Images/EelWalkUpSmallElectric.png")
 eel = player.Player(40, 40, 426, 455,"Images/EelWalk.png", "Images/EelWalkUpSmall.png", "Images/EelWalkElectric.png", "Images/EelWalkUpSmallElectric.png")
 
-wall1 = pygame.draw.rect(screen, GREY, (330, 220, 40, 460))
-wall2 = pygame.draw.rect(screen, GREY, (1550, 220, 40, 460))
-wall3 = pygame.draw.rect(screen, GREY, (570, 270, 440, 40))
-wall4 = pygame.draw.rect(screen, GREY, (910, 590, 440, 40))
+wall1 = pygame.draw.rect(screen, GREY, (WIDTH/5.8, WIDTH/8.7, WIDTH/48, WIDTH/4.2))
+wall2 = pygame.draw.rect(screen, GREY, (WIDTH/1.23, WIDTH/8.7, WIDTH/48, WIDTH/4.2))
+wall3 = pygame.draw.rect(screen, GREY, (WIDTH/3.36, WIDTH/7.1, WIDTH/4.36, WIDTH/48))
+wall4 = pygame.draw.rect(screen, GREY, (WIDTH/2.1, WIDTH/3.25, WIDTH/4.36, WIDTH/48))
+
 
 ink_x = 10000
 ink_y = 10000
@@ -62,8 +73,16 @@ def message_display(text, x, y):
     screen.blit(TextSurf, TextRect)
 
 
+def play_sfx(name, timesplayed):
+    sfx = pygame.mixer.Sound('Sounds/' + name + '.wav')
+    sfx.play(loops=timesplayed)
+
+electric_sfx =pygame.mixer.Sound("Sounds/electric.wav")
 
 
+
+
+foo = 0
 
 while True:
     squid.rect = pygame.draw.rect(screen, BLUE, (squid.x, squid.y, squid.width, squid.height))
@@ -84,16 +103,28 @@ while True:
 
     if pressed[K_COMMA]:
         electrify = True
+        if soundplayed == False:
+            electric_sfx.play(loops=0)
+            soundplayed = True
     else:
+        electric_sfx.stop()
+        soundplayed = False
         electrify = False
+
+    if pressed[K_KP4]:
+        foo = 1
 
     if pressed[K_KP0] and punchCooldown == 0:
         punch = True
+        play_sfx('woosh', 0)
+
+
 
     if pressed[K_KP_PERIOD] and inkCooldown == 0:
         ink_x = squid.x + squid.width / 2
         ink_y = squid.y + squid.height
         ink = True
+        play_sfx('inksound',0)
 
     # squid wall collisions
     if pygame.Rect.colliderect(wall1, squid.rect) or pygame.Rect.colliderect(wall2, squid.rect) or pygame.Rect.colliderect(wall3, squid.rect) or pygame.Rect.colliderect(wall4, squid.rect):
@@ -106,10 +137,14 @@ while True:
         if pygame.Rect.colliderect(squid.rect, eel.rect):
             squid.health -= 0.5
 
+
+
     if punch == True:
         punchCooldown = 100
         if pygame.Rect.colliderect(squid.rect, eel.rect):
-            eel.health -= 25
+            eel.health -= 10
+            play_sfx('woosh',0)
+            play_sfx('punch',0)
             eel.checkHealth()
             punch = False
         else:
@@ -132,6 +167,7 @@ while True:
             eel.speed = 15
             if pygame.Rect.colliderect(squid.rect, eel.rect):
                 if chargeDamage == True:
+                    play_sfx('ChargeHit', 0)
                     squid.health -= 15
                     chargeDamage = False
                 squid.checkHealth()
@@ -184,27 +220,27 @@ while True:
         inkCooldown -= 0.5
 
     if punchCooldown > 0:
-        punchCooldown -= 2
+        punchCooldown -= 4
 
 
 
-    message_display('Squid HP: ' + str(squid.health), (200),(HEIGHT - 100))
-    message_display('Eel HP: ' + str(eel.health), (550), (HEIGHT - 100))
+    message_display('Squid HP: ' + str(squid.health), (WIDTH - 220),(HEIGHT - 100))
+    message_display('Eel HP: ' + str(eel.health), 180, (HEIGHT - 100))
 
     if inkCooldown == 0:
-        message_display('Ink: Ready', (WIDTH - 250), (HEIGHT - 100))
+        message_display('Ink: Ready', (WIDTH - 550), (HEIGHT - 40))
     else:
-        message_display('Ink Timer: ' + str(int(99.5 - inkCooldown)) + '%', (WIDTH - 250), (HEIGHT - 100))
+        message_display('Ink: ' + str(int(99.5 - inkCooldown)) + '%', (WIDTH - 550), (HEIGHT - 40))
 
     if chargeCooldown == 0:
-        message_display('Charge: Ready', (WIDTH - 800), (HEIGHT - 100))
+        message_display('Charge: Ready', 220, (HEIGHT - 40))
     else:
-        message_display('Charge Timer: ' + str(int(99.5 - chargeCooldown)) + '%', (WIDTH - 800), (HEIGHT - 100))
+        message_display('Charge: ' + str(int(99.5 - chargeCooldown)) + '%', (220), (HEIGHT - 40))
 
     if punchCooldown == 0:
-        message_display('Punch: Ready', (WIDTH - 250), (HEIGHT - 40))
+        message_display('Punch: Ready', (WIDTH - 220), (HEIGHT - 40))
     else:
-        message_display(('Punch Timer: ' + str(int(99.5 - punchCooldown)) + '%'), (WIDTH - 250), (HEIGHT - 40))
+        message_display(('Punch: ' + str(int(99.5 - punchCooldown)) + '%'), (WIDTH - 220), (HEIGHT - 40))
 
     # eel speed changes
     if pygame.Rect.colliderect(wall1, eel.rect) or pygame.Rect.colliderect(wall2, eel.rect) or pygame.Rect.colliderect(wall3, eel.rect) or pygame.Rect.colliderect(wall4, eel.rect):

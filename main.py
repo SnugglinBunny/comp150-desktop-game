@@ -8,8 +8,8 @@ pygame.init()
 pygame.mixer.init(frequency=22050, size=-16, channels=1, buffer=4096)
 
 WHITE = 255, 255, 255
-WIDTH = 1536  # 1920
-HEIGHT = 864  # 1080
+WIDTH = 1920
+HEIGHT = 1080
 BLUE = 0, 188, 255
 LBLUE = 0, 100, 200
 BLACK = 0, 0, 0

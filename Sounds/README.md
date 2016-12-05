@@ -8,3 +8,4 @@ punch.wav - Recorded by Mike Koenig | License: Attribution 3.0
 
 ChargeHit.wav - Recorded by SoundMaster13 | License: Public Domain
 
+melody.wav - Recorded by Jonathan Marx
